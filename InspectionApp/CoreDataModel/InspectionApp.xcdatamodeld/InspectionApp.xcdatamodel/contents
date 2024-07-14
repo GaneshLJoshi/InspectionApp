@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CDAnswerChoice" representedClassName="CDAnswerChoice" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="score" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="cdquesion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDQuestion" inverseName="cdanswerChoices" inverseEntity="CDQuestion"/>
+    </entity>
+    <entity name="CDArea" representedClassName="CDArea" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="cdInspection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDInspection" inverseName="cdArea" inverseEntity="CDInspection"/>
+    </entity>
+    <entity name="CDCategory" representedClassName="CDCategory" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="cdQuestions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDQuestion" inverseName="cdcategory" inverseEntity="CDQuestion"/>
+        <relationship name="cdSurvey" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDSurvey" inverseName="cdCategory" inverseEntity="CDSurvey"/>
+    </entity>
+    <entity name="CDInspection" representedClassName="CDInspection" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="cdArea" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDArea" inverseName="cdInspection" inverseEntity="CDArea"/>
+        <relationship name="cdInspectionType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDInspectionType" inverseName="cdInspection" inverseEntity="CDInspectionType"/>
+        <relationship name="cdSurvey" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDSurvey" inverseName="cdInspection" inverseEntity="CDSurvey"/>
+        <relationship name="cdUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDUser" inverseName="cdInspection" inverseEntity="CDUser"/>
+    </entity>
+    <entity name="CDInspectionType" representedClassName="CDInspectionType" syncable="YES">
+        <attribute name="access" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="cdInspection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDInspection" inverseName="cdInspectionType" inverseEntity="CDInspection"/>
+    </entity>
+    <entity name="CDPastScores" representedClassName="CDPastScores" syncable="YES">
+        <attribute name="score" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDUser" inverseName="pastScores" inverseEntity="CDUser"/>
+    </entity>
+    <entity name="CDQuestion" representedClassName="CDQuestion" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="selectedAnswerChoiceId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="cdanswerChoices" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDAnswerChoice" inverseName="cdquesion" inverseEntity="CDAnswerChoice"/>
+        <relationship name="cdcategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDCategory" inverseName="cdQuestions" inverseEntity="CDCategory"/>
+    </entity>
+    <entity name="CDSurvey" representedClassName="CDSurvey" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="cdCategory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDCategory" inverseName="cdSurvey" inverseEntity="CDCategory"/>
+        <relationship name="cdInspection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDInspection" inverseName="cdSurvey" inverseEntity="CDInspection"/>
+    </entity>
+    <entity name="CDUser" representedClassName="CDUser" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <relationship name="cdInspection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDInspection" inverseName="cdUser" inverseEntity="CDInspection"/>
+        <relationship name="pastScores" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDPastScores" inverseName="user" inverseEntity="CDPastScores"/>
+    </entity>
+    <elements>
+        <element name="CDQuestion" positionX="-412.9356689453125" positionY="21.31161499023438" width="128" height="118"/>
+        <element name="CDAnswerChoice" positionX="-54" positionY="9" width="128" height="103"/>
+        <element name="CDUser" positionX="-216" positionY="72" width="128" height="74"/>
+        <element name="CDPastScores" positionX="-207" positionY="90" width="128" height="59"/>
+        <element name="CDInspectionType" positionX="-198" positionY="108" width="128" height="89"/>
+        <element name="CDArea" positionX="-189" positionY="126" width="128" height="74"/>
+        <element name="CDCategory" positionX="-180" positionY="135" width="128" height="89"/>
+        <element name="CDSurvey" positionX="-234" positionY="99" width="128" height="74"/>
+        <element name="CDInspection" positionX="-225" positionY="108" width="128" height="104"/>
+    </elements>
+</model>
