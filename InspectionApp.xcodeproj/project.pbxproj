@@ -14,7 +14,7 @@
 		FF073E0E2C40498D00DFEE84 /* InspectionApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF073E0C2C40498D00DFEE84 /* InspectionApp.xcdatamodeld */; };
 		FF073E102C40499800DFEE84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF073E0F2C40499800DFEE84 /* Assets.xcassets */; };
 		FF073E132C40499800DFEE84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF073E112C40499800DFEE84 /* LaunchScreen.storyboard */; };
-		FF073E1E2C40499900DFEE84 /* InspectionAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF073E1D2C40499900DFEE84 /* InspectionAppTests.swift */; };
+		FF073E1E2C40499900DFEE84 /* UserInspectionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF073E1D2C40499900DFEE84 /* UserInspectionViewModelTests.swift */; };
 		FF073E282C40499A00DFEE84 /* InspectionAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF073E272C40499A00DFEE84 /* InspectionAppUITests.swift */; };
 		FF073E2A2C40499A00DFEE84 /* InspectionAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF073E292C40499A00DFEE84 /* InspectionAppUITestsLaunchTests.swift */; };
 		FF073E392C404A1A00DFEE84 /* UserInspectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF073E382C404A1A00DFEE84 /* UserInspectionViewModel.swift */; };
@@ -42,6 +42,8 @@
 		FF073EC12C42F18500DFEE84 /* CDUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF073EBD2C42F18500DFEE84 /* CDUser+CoreDataClass.swift */; };
 		FF073EC22C42F18500DFEE84 /* CDUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF073EBE2C42F18500DFEE84 /* CDUser+CoreDataProperties.swift */; };
 		FF073EC42C4438BB00DFEE84 /* PastScoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF073EC32C4438BB00DFEE84 /* PastScoresViewController.swift */; };
+		FF1E997B2C4689F40024923F /* UIUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1E997A2C4689F30024923F /* UIUtility.swift */; };
+		FF1E997F2C46B4EF0024923F /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1E997E2C46B4EF0024923F /* LoginViewModelTests.swift */; };
 		FF7426C62C447ACB00CFFE4A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7426C52C447ACB00CFFE4A /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,7 +75,7 @@
 		FF073E122C40499800DFEE84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF073E142C40499800DFEE84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF073E192C40499900DFEE84 /* InspectionAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InspectionAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF073E1D2C40499900DFEE84 /* InspectionAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionAppTests.swift; sourceTree = "<group>"; };
+		FF073E1D2C40499900DFEE84 /* UserInspectionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInspectionViewModelTests.swift; sourceTree = "<group>"; };
 		FF073E232C40499900DFEE84 /* InspectionAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InspectionAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF073E272C40499A00DFEE84 /* InspectionAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionAppUITests.swift; sourceTree = "<group>"; };
 		FF073E292C40499A00DFEE84 /* InspectionAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -102,6 +104,8 @@
 		FF073EBD2C42F18500DFEE84 /* CDUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDUser+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FF073EBE2C42F18500DFEE84 /* CDUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FF073EC32C4438BB00DFEE84 /* PastScoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastScoresViewController.swift; sourceTree = "<group>"; };
+		FF1E997A2C4689F30024923F /* UIUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtility.swift; sourceTree = "<group>"; };
+		FF1E997E2C46B4EF0024923F /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		FF7426C52C447ACB00CFFE4A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -171,7 +175,8 @@
 		FF073E1C2C40499900DFEE84 /* InspectionAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				FF073E1D2C40499900DFEE84 /* InspectionAppTests.swift */,
+				FF073E1D2C40499900DFEE84 /* UserInspectionViewModelTests.swift */,
+				FF1E997E2C46B4EF0024923F /* LoginViewModelTests.swift */,
 			);
 			path = InspectionAppTests;
 			sourceTree = "<group>";
@@ -215,6 +220,7 @@
 		FF7426C72C447B5200CFFE4A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FF1E997A2C4689F30024923F /* UIUtility.swift */,
 				FF073E8A2C4293A400DFEE84 /* MainViewController.swift */,
 				FF073E8C2C4293D300DFEE84 /* LoginViewController.swift */,
 				FF073E902C42988A00DFEE84 /* SurveyDetailViewController.swift */,
@@ -389,6 +395,7 @@
 				FF073EA92C42DE7300DFEE84 /* CDSurvey+CoreDataProperties.swift in Sources */,
 				FF073EB32C42DE7300DFEE84 /* CDPastScores+CoreDataProperties.swift in Sources */,
 				FF073E8B2C4293A400DFEE84 /* MainViewController.swift in Sources */,
+				FF1E997B2C4689F40024923F /* UIUtility.swift in Sources */,
 				FF073E3D2C404B0500DFEE84 /* PersistenceManager.swift in Sources */,
 				FF073EBA2C42ED8500DFEE84 /* CDQuestion+CoreDataProperties.swift in Sources */,
 				FF073EA82C42DE7300DFEE84 /* CDSurvey+CoreDataClass.swift in Sources */,
@@ -400,7 +407,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF073E1E2C40499900DFEE84 /* InspectionAppTests.swift in Sources */,
+				FF1E997F2C46B4EF0024923F /* LoginViewModelTests.swift in Sources */,
+				FF073E1E2C40499900DFEE84 /* UserInspectionViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

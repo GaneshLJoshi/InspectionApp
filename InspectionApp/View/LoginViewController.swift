@@ -32,40 +32,15 @@ class LoginViewController: UIViewController {
         return view
     }()
     
-    private let emailTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Email"
-        textField.borderStyle = .roundedRect
-        textField.autocapitalizationType = .none
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
+    private let emailTextField: UITextField = .createTextField(placeholder: "Email")
+
+    private let passwordTextField: UITextField = .createTextField(placeholder: "Password", isSecure: true)
     
-    private let passwordTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Password"
-        textField.borderStyle = .roundedRect
-        textField.isSecureTextEntry = true
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
+    private let loginButton: UIButton = .createButton(withTitle: "Login", target: self, action: #selector(loginButtonTapped))
     
-    private let loginButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Login", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        return button
-    }()
-    
-    private let registerButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Register", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
-        return button
-    }()
-    
+    private let registerButton: UIButton = .createButton(withTitle: "Register", target: self, action: #selector(registerButtonTapped))
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -76,18 +51,7 @@ class LoginViewController: UIViewController {
     @objc private func loginButtonTapped() {
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
         
-        if !viewModel.isValidEmail(email) {
-            showAlert(message: "Please enter a valid email address.")
-            return
-        }
-        
-        if !viewModel.isValidPassword(password) {
-            showAlert(message: "Password must be at least 4 characters long.")
-            return
-        }
-        
-        viewModel.email = email
-        viewModel.password = password
+        validateInputs(email: email, password: password)
         
         viewModel.login { [weak self] success, errorMessage in
             
@@ -98,9 +62,7 @@ class LoginViewController: UIViewController {
                 UserDefaults.standard.setValue(email, forKey: "email")
                 self.dismiss(animated: true, completion: nil)
             } else {
-                let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self.showAlert(message: errorMessage ?? "")
             }
         }
         
@@ -108,8 +70,7 @@ class LoginViewController: UIViewController {
         view.endEditing(true)
     }
     
-    @objc private func registerButtonTapped() {
-        guard let email = emailTextField.text, let password = passwordTextField.text else { return }
+    private func validateInputs(email: String, password: String) {
         
         if !viewModel.isValidEmail(email) {
             showAlert(message: "Please enter a valid email address.")
@@ -123,6 +84,12 @@ class LoginViewController: UIViewController {
         
         viewModel.email = email
         viewModel.password = password
+    }
+    
+    @objc private func registerButtonTapped() {
+        guard let email = emailTextField.text, let password = passwordTextField.text else { return }
+        
+        validateInputs(email: email, password: password)
         
         viewModel.register { [weak self] success, errorMessage in
             
@@ -219,9 +186,8 @@ extension LoginViewController {
     }
     
     private func showAlert(message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        
+        InspectionApp.showAlert(from: self, withTitle: "Error", message: message)
     }
 }
 

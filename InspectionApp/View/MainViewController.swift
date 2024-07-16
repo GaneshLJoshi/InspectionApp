@@ -8,11 +8,11 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    
-    private let startInspectionButton = UIButton(type: .system)
-    private let resumeInspectionButton = UIButton(type: .system)
-    private let pastScoresButton = UIButton(type: .system)
-    private let logoutButton = UIButton(type: .system)
+
+    private lazy var startInspectionButton: UIButton = .createButton(withTitle: "Start Inspection", target: self, action: #selector(startInspectionTapped))
+    private lazy var resumeInspectionButton: UIButton = .createButton(withTitle: "Resume Inspection", target: self, action: #selector(resumeInspectionTapped))
+    private lazy var pastScoresButton: UIButton = .createButton(withTitle: "Past Scores", target: self, action: #selector(pastScoresTapped))
+    private lazy var logoutButton: UIButton = .createButton(withTitle: "Logout", target: self, action: #selector(logoutButtonTapped))
         
     var userInspectionViewModel = UserInspectionViewModel(inspectionService: InspectionService())
     
@@ -28,12 +28,12 @@ class MainViewController: UIViewController {
     }
     
     private func presentLoginViewController() {
-            let loginViewModel = LoginViewModel(authService: AuthService())
-            let loginViewController = LoginViewController(viewModel: loginViewModel)
-            let navigationController = UINavigationController(rootViewController: loginViewController)
-            navigationController.modalPresentationStyle = .fullScreen
-            present(navigationController, animated: true, completion: nil)
-        }
+        let loginViewModel = LoginViewModel(authService: AuthService())
+        let loginViewController = LoginViewController(viewModel: loginViewModel)
+        let navigationController = UINavigationController(rootViewController: loginViewController)
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true, completion: nil)
+    }
     
     @objc private func startInspectionTapped() {
         PersistenceManager.shared.deleteInspection(forEmail: self.userInspectionViewModel.user)
@@ -76,28 +76,16 @@ extension MainViewController {
     private func setupUI() {
         view.backgroundColor = .white
         
-        startInspectionButton.setTitle("Start Inspection", for: .normal)
-        resumeInspectionButton.setTitle("Resume Inspection", for: .normal)
-        pastScoresButton.setTitle("Past Scores", for: .normal)
-        logoutButton.setTitle("Logout", for: .normal)
-        
-        startInspectionButton.addTarget(self, action: #selector(startInspectionTapped), for: .touchUpInside)
-        resumeInspectionButton.addTarget(self, action: #selector(resumeInspectionTapped), for: .touchUpInside)
-        pastScoresButton.addTarget(self, action: #selector(pastScoresTapped), for: .touchUpInside)
-        logoutButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
-        
         view.addSubview(startInspectionButton)
         view.addSubview(resumeInspectionButton)
         view.addSubview(pastScoresButton)
         view.addSubview(logoutButton)
         
-        // Set translatesAutoresizingMaskIntoConstraints to false
-        startInspectionButton.translatesAutoresizingMaskIntoConstraints = false
-        resumeInspectionButton.translatesAutoresizingMaskIntoConstraints = false
-        pastScoresButton.translatesAutoresizingMaskIntoConstraints = false
-        logoutButton.translatesAutoresizingMaskIntoConstraints = false
-        
         // Set up Auto Layout constraints
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             startInspectionButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             startInspectionButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -60),
